@@ -3,11 +3,11 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Test {{size}} URL length</title>
+    <title>Test {{humanSize}} URL length</title>
     <style>
       body {
         margin: 0 auto;
-        max-width: 550px;
+        max-width: 650px;
         padding: 3rem 3rem 3rem 3rem;
         border-radius: 6px;
         overflow-x: hidden;
@@ -28,15 +28,32 @@
       input[type='number']::-webkit-outer-spin-button {
         opacity: 1;
       }
+
+      a {
+        text-decoration: none;
+        color: #228be6;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+      
+      a[href*="//"]:after {
+        font-size: .85em;
+        content: "\2197";
+      }
+
+      .github-corner:after {
+        display: none;
+      }
     </style>
   </head>
 
   <body class="vsc-initialized" cz-shortcut-listen="true">
     <header>
-      <h1 align="center" style="line-height: 1.5;">
-        <span>Generated a {{size}} characters URL.</span>
-        <div><small>And it works fine.</small></div>
-        
+      <h1 style="line-height: 1.5; text-align: center;">
+        <span>Generated a {{humanSize}} characters URL.</span>
+        <div><small>And it works fine.</small></div>  
       </h1>
 
       <aside>
@@ -46,7 +63,7 @@
             type="number"
             id="size"
             value="{{size}}"
-            style="width: 40px;"
+            style="width: 64px;"
             autofocus
           />
           characters <button id="button">Generate it</button>
@@ -59,22 +76,25 @@
     </p>
 
     <ul>
-      <li>using cURL, max length is 16280.</li>
-      <li>using Chrome, is around 40K bigger than that does strange things.</li>
+      <li>using cURL, max length is 16,280.</li>
+      <li>using Chrome, is around 40,000 bigger than that does strange things.</li>
       <li>
         using Safari, similar to Chrome but it returns a kCFErrorDomainCFNetwork
         error 303 (?)
       </li>
       <li>
-        using Firefox, it can handle bigger than 40K but then Vercel server
+        using Firefox, it can handle bigger than 40,000 but then Vercel server
         throw a Stream error.
+      </li>
+      <li>
+        Did you try in any other please? Please <a href="https://github.com/Kikobeats/test-length/blob/master/src/template.html#L72">edit</a> this file.
       </li>
     </ul>
 
     <p>
       The HTTP
       <a href="https://github.com/httpwg/http-core/issues/169">just</a> specify
-      a 8000 as minimum.
+      8000 as the minimum.
     </p>
 
     <script>

@@ -18,6 +18,10 @@ module.exports = (req, res) => {
     return res.redirect(`/${hash}`)
   } else {
     res.setHeader('Content-Type', 'text/html')
-    return res.send(template.replace(/{{size}}/g, url.length))
+    const size = url.length || 8000
+    const body = template
+      .replace(/{{size}}/g, size)
+      .replace(/{{humanSize}}/g, Number(size).toLocaleString('en'))
+    return res.send(body)
   }
 }

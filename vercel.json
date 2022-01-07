@@ -11,7 +11,7 @@
   },
   {
     "src": "/favicon.ico",
-    "status": 204
+    "dest": "https://emojipedia-api.vercel.app/?emoji=black-flag"
   },
   {
     "src": "/(.*)",
