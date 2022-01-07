@@ -1,10 +1,11 @@
 'use strict'
 
 const { URLSearchParams } = require('url')
+const { readFileSync } = require('fs')
 const { nanoid } = require('nanoid')
-const fs = require('fs')
+const { join } = require('path')
 
-const template = fs.readFileSync('template.html', 'utf-8')
+const template = readFileSync(join(__dirname, 'template.html'), 'utf8')
 
 const query = input => Object.fromEntries(new URLSearchParams(input))
 
@@ -17,6 +18,6 @@ module.exports = (req, res) => {
     return res.redirect(`/${hash}`)
   } else {
     res.setHeader('Content-Type', 'text/html')
-    return res.send(template.replaceAll('{{size}}', url.length))
+    return res.send(template.replace(/{{size}}/g, url.length))
   }
 }
