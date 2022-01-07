@@ -15,6 +15,6 @@
   },
   {
     "src": "/(.*)",
-    "dest": "/index.js"
+    "dest": "/src/index.js"
   }]
 }

@@ -1,5 +1,26 @@
 {
+  "name": "test-length",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
   "dependencies": {
     "nanoid": "~3.1.30"
-  }
+  },
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kikobeats/test-length.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kikobeats/test-length/issues"
+  },
+  "homepage": "https://github.com/Kikobeats/test-length#readme"
 }
