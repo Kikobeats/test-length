@@ -2,6 +2,9 @@
 
 const { URLSearchParams } = require('url')
 const { nanoid } = require('nanoid')
+const fs = require('fs')
+
+const template = fs.readFileSync('template.html', 'utf-8')
 
 const query = input => Object.fromEntries(new URLSearchParams(input))
 
@@ -13,8 +16,7 @@ module.exports = (req, res) => {
     const hash = nanoid(size)
     return res.redirect(`/${hash}`)
   } else {
-    return res.send(
-      `Generated a ${url.length} characters URL. Send \`/?size=n\` to create a new one.`
-    )
+    res.setHeader('Content-Type', 'text/html')
+    return res.send(template.replaceAll('{{size}}', url.length))
   }
 }
